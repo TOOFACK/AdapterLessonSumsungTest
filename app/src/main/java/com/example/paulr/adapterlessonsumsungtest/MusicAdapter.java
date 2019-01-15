@@ -5,8 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,9 +21,16 @@ import java.util.List;
 
 public class MusicAdapter extends RecyclerView.Adapter<MusicAdapter.MusicVH> {
     List<Musiv> musicList;
+    private Context context;
 
     public MusicAdapter(List<Musiv> musicList) {
         this.musicList = musicList;
+    }
+    public MusicAdapter(Context context) {
+        this.context = context;
+    }
+    public MusicAdapter( ) {
+
     }
 
     @NonNull
@@ -51,6 +62,14 @@ public class MusicAdapter extends RecyclerView.Adapter<MusicAdapter.MusicVH> {
             @Override
             public void onClick(View v) {
             Intent intent = new Intent(musicVH.itemView.getContext(), Description.class);
+            intent.putExtra("Name",musicVH.artist.getText());
+            intent.putExtra("Description",musicVH.description.getText());
+//                Bundle bundle = new Bundle();
+//                int id = musicVH.albumImage.getId();
+//                bundle.putInt("image", id);
+//                intent.putExtras(bundle);
+            //intent.putExtra("Image", musicVH.albumImage.getId());
+                context.startActivity(intent);
 
             }
         });

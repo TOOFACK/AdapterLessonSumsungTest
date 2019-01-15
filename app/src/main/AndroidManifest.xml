@@ -19,5 +19,4 @@
         <activity android:name=".MusicAdapter" />
         <activity android:name=".Description"></activity>
     </application>
-
 </manifest>
